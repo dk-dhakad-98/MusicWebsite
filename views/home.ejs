@@ -1,0 +1,71 @@
+<html>
+
+<head>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <script src="/javascripts/Songs.js"></script>
+  <script src="/javascripts/rating.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-wrapper" style="background-color: #bdc3c7;">
+      <a style="padding-left: 15px;" href="#!" class="brand-logo"><i class="material-icons">music_note</i>Home</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a><i class="material-icons">search</i></a></li>
+
+        <li><a href="/admin/admin_exit">LogOut</a></li>
+
+      </ul>
+    </div>
+  </nav>
+  <div style="padding-top: 15px;">
+    <span class="heading" style="padding-left: 30px;">Top 10 Songs</span><span style="padding-left: 1170px;"><a
+        href="/spotify/add_new_song" class="waves-effect waves-light btn"
+        style="background-color:black ;color:aliceblue;"><i class="material-icons left">add</i>Add Song</a></span>
+  </div>
+  <table class="striped" style="background-color: grey;margin-left:10px">
+    <thead>
+      <tr>
+        <th> Artwork</th>
+        <th> Song</th>
+        <th> Date of Release</th>
+        <th> Artists</th>
+        <th>rate</th>
+      </tr>
+    </thead>
+
+    <tbody id="result">
+    </tbody>
+  </table>
+
+  <div style="padding-top: 20px;">
+    <span class="heading" style="padding-left: 30px;">Top 10 Artists</span>
+  </div>
+  <table class="striped" style="background-color: grey;margin-left:10px;">
+    <thead>
+      <tr>
+        <th> Artist</th>
+        <th> Date of Birth</th>
+        <th>Songs</th>
+      </tr>
+    </thead>
+
+    <tbody id="result1">
+    </tbody>
+  </table>
+
+  <!--JavaScript at end of body for optimized loading-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>

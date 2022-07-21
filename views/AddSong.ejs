@@ -1,0 +1,163 @@
+<html>
+
+<head>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <script src="/javascripts/project.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.datepicker').datepicker();
+    });
+  </script>
+  <script>
+    $(document).ready(function () {
+      $('select').formSelect();
+    });
+  </script>
+  <script>
+    $(document).ready(function () {
+      $('.modal').modal();
+      $(add).click(function () {
+        if ($(artistname).val().length > 3) {
+
+          $.getJSON('/spotify/add_artist', { artistname: $(artistname).val(), dob: $(dob).val(), bio: $(bio).val() })
+        }
+
+      })
+      $.getJSON('/spotify/fetchartist', function (data) {
+        data.forEach(ele => {
+
+          $(artist).append($('<option>').val(ele.artistid).text(ele.artistname))
+        });
+        $(document).ready(function () {
+          $('select').formSelect();
+        });
+
+      })
+
+
+    });
+
+  </script>
+</head>
+
+<body>
+  <form action="/spotify/upload_song" method="post" enctype="multipart/form-data">
+    <nav>
+      <div class="nav-wrapper" style="background-color: #bdc3c7;">
+        <a style="padding-left: 15px;" href="#!" class="brand-logo"><i class="material-icons">music_note</i>Home</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="sass.html"><i class="material-icons">search</i></a></li>
+          <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
+          <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
+          <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="root">
+        <div class="box">
+          <div class="row heading">
+            Adding a new Song
+          </div>
+          <div class="item">
+            <span style="padding-top: 10px;">Song</span>
+            <div class="">
+              <input required placeholder="Song Name" id="songname" name="songname" type="text" class="validate">
+
+            </div>
+          </div>
+          <div class="item">
+            <span style="padding-top: 10px;">Date of released</span>
+            <span><input type="text" name="dateofrelease" id="dateofrelease" class="datepicker"></span>
+          </div>
+
+          <div class="item">
+            <span style="padding-top: 10px;">Artwork</span>
+            <div class="file-field input-field" style="width:200px ;">
+              <div class="btn">
+                <span>Upload Image </span>
+                <input type="file" name="artwork" />
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box_1">
+          <span style="padding-top: 12px;">Artists</span>
+          <div class="input-field col s12" style="padding-left: 180px;">
+            <select multiple name="artist" id="artist">
+              <option value="" disabled selected>Search</option>
+            </select>
+          </div>
+          <span style="padding-left: 90px;padding-top: 14px;"><a class="waves-effect waves-light btn modal-trigger"
+              href="#modal1"><i class="material-icons left">add</i>Add Artist</a></span><br>
+
+
+
+        </div>
+        <div style="display: flex; padding-left: 220px ;">
+          <span><a href="/spotify/home" class="btn waves-effect waves-light" type="reset" name="action">Cancel</a>
+          </span>
+          <span style="display: flex; padding-left: 5px ;"><button class="btn waves-effect waves-light" type="submit"
+              name="action">Save
+            </button>
+          </span>
+        </div>
+      </div>
+    </div>
+    </div>
+  </form>
+
+  <form>
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h5>Add Artist</h5>
+        <div class="row">
+          <div class="col s6">
+            Artist name
+          </div>
+          <div class="col s6">
+            <input required placeholder="Name" id="artistname" name="artistname" type="text" class="validate">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s6">
+            Date of Birth
+          </div>
+          <div class="col s6">
+            <input type="date" name="dob" id="dob">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s6">
+            Bio
+          </div>
+          <div class="col s6">
+            <textarea type="text" id="bio" name="bio"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+        <a class="modal-close waves-effect waves-green btn-flat" name="add" id="add">Done</a>
+      </div>
+    </div>
+  </form>
+
+  <!--JavaScript at end of body for optimized loading-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>
